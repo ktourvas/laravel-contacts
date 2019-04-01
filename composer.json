@@ -1,0 +1,26 @@
+{
+  "name": "ktourvas/laravel-contact",
+  "type": "simple laravel package managing website contacts",
+  "require": {
+    "laravel/framework": "^5.7"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kostas Tourvas",
+      "email": "k.tourvas@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "laravel\\contacts\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "laravel\\contacts\\LaravelContactsServiceProvider"
+      ]
+    }
+  }
+}
