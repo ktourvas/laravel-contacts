@@ -20,6 +20,7 @@ class CreateContactsTable extends Migration
             $table->string('email', 100);
             $table->string('tel', 100);
             $table->string('msg', 1000);
+            $table->boolean('opt');
             $table->boolean('processed');
             $table->timestamps();
         });

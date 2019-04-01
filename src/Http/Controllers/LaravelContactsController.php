@@ -20,7 +20,7 @@ class LaravelContactsController extends Controller {
             'surname' => 'required|max:200',
             'email' => 'required|email',
             'msg' => 'required|max:1000',
-            'optin' => 'required|accepted',
+            'opt' => 'required|accepted',
         ]);
 
         $contact = Contact::create([
@@ -29,7 +29,7 @@ class LaravelContactsController extends Controller {
             'email' => $request->email,
             'tel' => $request->tel,
             'msg' => $request->msg,
-            'opt' => $request->optin == 'on' ? 1 : 0,
+            'opt' => $request->opt == 'on' ? 1 : 0,
         ]);
 
         return [ 'success' => true ];
