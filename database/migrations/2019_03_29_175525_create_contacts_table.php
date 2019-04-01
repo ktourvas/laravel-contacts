@@ -19,6 +19,7 @@ class CreateContactsTable extends Migration
             $table->string('surname', 100);
             $table->string('email', 100);
             $table->string('tel', 100);
+            $table->string('msg', 1000);
             $table->boolean('processed');
             $table->timestamps();
         });

@@ -19,6 +19,7 @@ class LaravelContactsController extends Controller {
             'name' => 'required|max:200',
             'surname' => 'required|max:200',
             'email' => 'required|email',
+            'msg' => 'required|max:1000',
             'optin' => 'required|accepted',
         ]);
 
@@ -27,6 +28,7 @@ class LaravelContactsController extends Controller {
             'surname' => $request->surname,
             'email' => $request->email,
             'tel' => $request->tel,
+            'msg' => $request->msg,
             'opt' => $request->optin == 'on' ? 1 : 0,
         ]);
 
