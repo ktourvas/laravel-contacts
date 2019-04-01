@@ -17,6 +17,7 @@ class LaravelContactsServiceProvider extends ServiceProvider
         if (! $this->app->routesAreCached()) {
             require __DIR__.'/routes/web.php';
         }
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**
