@@ -2,6 +2,6 @@
 
 Route::group([ 'middleware' => [ 'web' ] ], function () {
 
-    Route::post('/contact', 'laravelContacts\Http\Controllers\LaravelContactsController@submit');
+    Route::post('/contact', 'laravel\contacts\Http\Controllers\LaravelContactsController@submit');
 
 });
