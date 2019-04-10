@@ -33,4 +33,10 @@ class LaravelContactsController extends Controller {
         return [ 'success' => true ];
     }
 
+    public function processed(Request $request, Contact $contact) {
+        return $contact->update([
+            'processed' => 1
+        ]);
+    }
+
 }

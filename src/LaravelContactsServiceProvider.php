@@ -18,6 +18,10 @@ class LaravelContactsServiceProvider extends ServiceProvider
             require __DIR__.'/routes/web.php';
         }
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+        $this->publishes([
+            __DIR__.'/../config/laravel-contacts.php' => config_path('laravel-contacts.php'),
+        ]);
     }
 
     /**
