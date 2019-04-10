@@ -15,6 +15,7 @@ class LaravelContactsController extends Controller {
      */
     public function submit(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required|max:200',
             'surname' => 'required|max:200',
@@ -30,12 +31,14 @@ class LaravelContactsController extends Controller {
             'msg' => $request->msg
         ]);
 
-        return [ 'success' => true ];
+        return [ 'success' => !empty($contact) ];
     }
 
     public function processed(Request $request, Contact $contact) {
-        return $contact->update([
-            'processed' => 1
+        return response([
+            'status' => $contact->update([
+                'processed' => 1
+            ])
         ]);
     }
 

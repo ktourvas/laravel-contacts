@@ -21,6 +21,6 @@ class ContactPolicy
      */
     public function update(User $user, Contact $contact)
     {
-        return $user->isAdministrator();
+        return true;
     }
 }
