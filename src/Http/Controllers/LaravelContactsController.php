@@ -21,7 +21,7 @@ class LaravelContactsController extends Controller {
             'surname' => 'required|max:200',
             'email' => 'required|email',
             'msg' => 'required|max:1000',
-        ]);
+        ], config('laravel-contacts.messages'));
 
         $contact = Contact::create([
             'name' => $request->name,
