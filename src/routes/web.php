@@ -2,13 +2,25 @@
 
 Route::group([ 'middleware' => [ 'web' ] ], function () {
 
-    Route::post('/contact', 'laravel\contacts\Http\Controllers\LaravelContactsController@submit');
+    Route::group([ 'middleware' => [ 'LaravelAdmin' ] ], function () {
+        Route::get(config('laravel-admin.root_url').'/contacts', 'laravel\contacts\Http\Controllers\LaravelContactsAdminController@index');
+    });
 
 });
 
-Route::group([ 'middleware' => config('laravel-contacts.altering_methods_middleware') ], function () {
+Route::prefix('api')->group(function () {
 
-    Route::put('/api/contacts/{contact}/processed', 'laravel\contacts\Http\Controllers\LaravelContactsController@processed')
-        ->middleware('can:update,contact');
+    Route::group([ 'middleware' => [ 'api' ] ], function () {
+
+        Route::post('contacts', 'laravel\contacts\Http\Controllers\LaravelContactsController@submit');
+
+        Route::group([ 'middleware' => [ 'auth:api', 'LaravelAdmin' ] ], function () {
+
+            Route::put('contacts/{contact}/processed', 'laravel\contacts\Http\Controllers\LaravelContactsController@processed')
+                ->middleware('can:update,contact');
+
+        });
+
+    });
 
 });
