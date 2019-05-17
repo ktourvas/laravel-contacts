@@ -34,7 +34,37 @@ class LaravelContactsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if(!empty(config('laravel-admin'))) {
 
+            config([
+                'laravel-admin.sidebar_includes' => array_merge(
+                    config('laravel-admin.sidebar_includes'),
+                    [
+                        'contacts' => [
+
+                            'head' => [
+                                'label' => 'Site Contacts'
+                            ],
+
+                            'children' => [
+                                [
+                                    'label' => 'View',
+                                    'url' => '/contacts/'
+                                ]
+                            ]
+                        ]
+                    ])
+            ]);
+
+            config([
+                'laravel-admin.dashboard.blocks' => array_merge(
+                    config('laravel-admin.dashboard.blocks'),
+                    [
+                        \laravel\contacts\Invokable\Unread::class
+                    ])
+            ]);
+
+        }
     }
 
     /**
