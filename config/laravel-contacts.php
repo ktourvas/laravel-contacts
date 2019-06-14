@@ -14,4 +14,21 @@ return [
 
     'contacts_table' => 'contacts',
 
+    'submit' => [
+
+        'rules' => [
+            'name' => 'required|max:200',
+            'surname' => 'required|max:200',
+            'email' => 'required|email',
+            'msg' => 'required|max:1000',
+        ],
+        'messages' => [
+            'name.required' => 'Το πεδίο Όνομα είναι υποχρεωτικό',
+            'surname.required' => 'Το πεδίο Επώνυμο είναι υποχρεωτικό',
+            'email.required' => 'Το πεδίο E-mail είναι υποχρεωτικό',
+            'msg.required' => 'Παρακαλούμε συμπλήρωσε το μήνυμά σας',
+        ]
+
+    ],
+
 ];
