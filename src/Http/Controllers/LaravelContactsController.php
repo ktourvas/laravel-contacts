@@ -5,6 +5,7 @@ namespace laravel\contacts\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use laravel\contacts\Contact;
+use laravel\contacts\Events\ContactSubmitted;
 
 class LaravelContactsController extends Controller {
 
@@ -21,7 +22,7 @@ class LaravelContactsController extends Controller {
     /**
      * Manage the contact form post submission.
      *
-     * @return void
+     * @return array
      */
     public function submit(Request $request)
     {
@@ -38,6 +39,10 @@ class LaravelContactsController extends Controller {
             'tel' => !empty($request->tel) ? $request->tel : '',
             'msg' => $request->msg
         ]);
+
+        if( !empty($contact) ) {
+            event( new ContactSubmitted($contact) );
+        }
 
         return [ 'success' => !empty($contact) ];
     }

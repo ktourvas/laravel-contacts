@@ -3,6 +3,7 @@
 namespace laravel\contacts;
 
 use Illuminate\Support\ServiceProvider;
+use laravel\contacts\Providers\EventServiceProvider;
 
 class LaravelContactsServiceProvider extends ServiceProvider
 {
@@ -65,6 +66,8 @@ class LaravelContactsServiceProvider extends ServiceProvider
             ]);
 
         }
+
+        $this->app->register(EventServiceProvider::class);
     }
 
     /**
@@ -74,6 +77,8 @@ class LaravelContactsServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-//        return [  ];
+        return [
+            'laravel\contacts\Providers\EventServiceProvider'
+        ];
     }
 }

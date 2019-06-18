@@ -31,4 +31,6 @@ return [
 
     ],
 
+    'mail_contacts_to' => 'k.tourvas@gmail.com'
+
 ];
