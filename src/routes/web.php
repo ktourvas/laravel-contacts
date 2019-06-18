@@ -6,13 +6,13 @@ Route::group([ 'middleware' => [ 'web' ] ], function () {
         Route::get(config('laravel-admin.root_url').'/contacts', 'laravel\contacts\Http\Controllers\LaravelContactsAdminController@index');
     });
 
+    Route::post('api/contacts', 'laravel\contacts\Http\Controllers\LaravelContactsController@submit');
+
 });
 
 Route::prefix('api')->group(function () {
 
     Route::group([ 'middleware' => [ 'api' ] ], function () {
-
-        Route::post('contacts', 'laravel\contacts\Http\Controllers\LaravelContactsController@submit');
 
         Route::group([ 'middleware' => [ 'auth:api', 'LaravelAdmin' ] ], function () {
 
