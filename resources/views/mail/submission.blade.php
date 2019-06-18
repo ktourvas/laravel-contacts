@@ -13,14 +13,11 @@
     </style>
 </head>
 <body style="margin:0; padding:0; background-color:#F2F2F2;">
-<center>
-    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F2F2F2">
-        <tr>
-            <td align="center" valign="top">
-                {{ $contact }}
-            </td>
-        </tr>
-    </table>
-</center>
+
+<b>New Contact Submission </b><br>
+<b>Full Name</b>: {{ $contact->name }} {{ $contact->surname }}<br>
+<b>Email</b>: {{ $contact->email }} <br>
+<b>Message</b>: {{ $contact->msg }} <br>
+
 </body>
 </html>
