@@ -3,6 +3,8 @@
 namespace laravel\contacts;
 
 use Illuminate\Support\ServiceProvider;
+use laravel\contacts\Providers\AuthServiceProvider;
+use laravel\contacts\Policies\ContactPolicy;
 use laravel\contacts\Providers\EventServiceProvider;
 
 class LaravelContactsServiceProvider extends ServiceProvider
@@ -26,6 +28,7 @@ class LaravelContactsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/laravel-contacts.php' => config_path('laravel-contacts.php'),
         ]);
+
     }
 
     /**
@@ -35,6 +38,27 @@ class LaravelContactsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->appendToAdminConfig();
+        $this->app->register(EventServiceProvider::class);
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [
+//            EventServiceProvider::class,
+//            AuthServiceProvider::class
+        ];
+    }
+
+    private function appendToAdminConfig() {
+
+        //TODO: check viewAny method of policy and append only on true
+
         if(!empty(config('laravel-admin'))) {
 
             config([
@@ -66,19 +90,6 @@ class LaravelContactsServiceProvider extends ServiceProvider
             ]);
 
         }
-
-        $this->app->register(EventServiceProvider::class);
     }
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [
-            'laravel\contacts\Providers\EventServiceProvider'
-        ];
-    }
 }

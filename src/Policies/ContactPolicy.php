@@ -7,20 +7,44 @@ use laravel\contacts\Contact;
 
 class ContactPolicy
 {
+
     public function __construct()
     {
 
     }
 
-    /**
-     * Determine if the given post can be updated by the user.
-     *
-     * @param  \App\User  $user
-     * @param  \laravel\contacts\Contact;  $contact
-     * @return bool
-     */
-    public function update(User $user, Contact $contact)
-    {
+    public function viewAny(User $user) {
         return true;
     }
+
+    public function view(User $user, Contact $contact)
+    {
+        return false;
+    }
+
+    public function create(User $user, Contact $contact)
+    {
+        return false;
+    }
+
+    public function update(User $user, Contact $contact)
+    {
+        return false;
+    }
+
+    public function delete(User $user, Contact $contact)
+    {
+        return false;
+    }
+
+    public function restore(User $user, Contact $contact)
+    {
+        return false;
+    }
+
+    public function forceDelete(User $user, Contact $contact)
+    {
+        return false;
+    }
+
 }

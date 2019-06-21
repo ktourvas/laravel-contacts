@@ -11,12 +11,15 @@ class LaravelContactsController extends Controller {
 
     public function __construct()
     {
+
         $this->rules = !empty(config('laravel-contacts.submit.rules')) ? config('laravel-contacts.submit.rules') : [
             'name' => 'required|max:200',
             'surname' => 'required|max:200',
             'email' => 'required|email',
             'msg' => 'required|max:1000',
         ];
+
+//        $this->authorizeResource(Contact::class);
     }
 
     /**

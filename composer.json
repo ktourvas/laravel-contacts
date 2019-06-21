@@ -19,7 +19,9 @@
   "extra": {
     "laravel": {
       "providers": [
-        "laravel\\contacts\\LaravelContactsServiceProvider"
+        "laravel\\contacts\\LaravelContactsServiceProvider",
+        "laravel\\contacts\\Providers\\EventServiceProvider",
+        "laravel\\contacts\\AuthServiceProvider"
       ]
     }
   }

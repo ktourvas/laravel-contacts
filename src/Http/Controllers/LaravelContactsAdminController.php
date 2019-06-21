@@ -6,15 +6,27 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use laravel\contacts\Contact;
 
+
 class LaravelContactsAdminController extends Controller {
 
-    /**
-     *
-     *
-     * @return view
-     */
+    public function __construct()
+    {
+//        $this->authorizeResource(Contact::class);
+
+//        dd( $container );
+//        dd($this);
+//        index -> viewAny
+//        show -> view
+//        create -> create
+//        store -> create
+//        edit -> update
+//        update -> update
+//        destroy -> delete
+    }
+
     public function index(Request $request)
     {
+        dd($request->user()->can('viewAny', Contact::class));
 
         return view('lc::admin.index', [
 

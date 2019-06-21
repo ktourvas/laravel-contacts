@@ -24,7 +24,7 @@ class NewSubmissionMailer
      */
     public function handle(ContactSubmitted $event)
     {
-        if( !empty( config('laravel-contacts.mail_contacts_to') ) ) {
+        if( !empty( config('laravel-contacts.mail_contacts_to' ) ) ) {
             \Mail::to(
                 config('laravel-contacts.mail_contacts_to')
             )

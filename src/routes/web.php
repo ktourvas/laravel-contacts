@@ -16,8 +16,8 @@ Route::prefix('api')->group(function () {
 
         Route::group([ 'middleware' => [ 'auth:api', 'LaravelAdmin' ] ], function () {
 
-            Route::put('contacts/{contact}/processed', 'laravel\contacts\Http\Controllers\LaravelContactsController@processed')
-                ->middleware('can:update,contact');
+            Route::put('contacts/{contact}/processed', 'laravel\contacts\Http\Controllers\LaravelContactsController@processed');
+//                ->middleware('can:update,contact');
 
         });
 
