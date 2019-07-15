@@ -4,7 +4,6 @@ namespace laravel\contacts;
 
 use Illuminate\Support\ServiceProvider;
 use laravel\contacts\Providers\AuthServiceProvider;
-use laravel\contacts\Policies\ContactPolicy;
 use laravel\contacts\Providers\EventServiceProvider;
 
 class LaravelContactsServiceProvider extends ServiceProvider
@@ -57,8 +56,6 @@ class LaravelContactsServiceProvider extends ServiceProvider
 
     private function appendToAdminConfig() {
 
-        //TODO: check viewAny method of policy and append only on true
-
         if(!empty(config('laravel-admin'))) {
 
             config([
@@ -76,6 +73,9 @@ class LaravelContactsServiceProvider extends ServiceProvider
                                     'label' => 'View',
                                     'url' => '/contacts/'
                                 ]
+                            ],
+                            'authorize' => [
+                                \laravel\contacts\Contact::class
                             ]
                         ]
                     ])

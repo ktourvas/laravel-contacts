@@ -9,24 +9,10 @@ use laravel\contacts\Contact;
 
 class LaravelContactsAdminController extends Controller {
 
-    public function __construct()
-    {
-//        $this->authorizeResource(Contact::class);
-
-//        dd( $container );
-//        dd($this);
-//        index -> viewAny
-//        show -> view
-//        create -> create
-//        store -> create
-//        edit -> update
-//        update -> update
-//        destroy -> delete
-    }
+    public function __construct(){}
 
     public function index(Request $request)
     {
-        dd($request->user()->can('viewAny', Contact::class));
 
         return view('lc::admin.index', [
 
@@ -56,6 +42,12 @@ class LaravelContactsAdminController extends Controller {
             'status' => $contact->update([
                 'processed' => 1
             ])
+        ]);
+    }
+
+    public function delete(Request $request, Contact $contact) {
+        return response([
+            'status' => $contact->delete()
         ]);
     }
 
