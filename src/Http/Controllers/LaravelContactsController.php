@@ -4,7 +4,7 @@ namespace laravel\contacts\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use laravel\contacts\Contact;
+use laravel\contacts\Entities\Contact;
 use laravel\contacts\Events\ContactSubmitted;
 
 class LaravelContactsController extends Controller {
@@ -32,7 +32,7 @@ class LaravelContactsController extends Controller {
         $this->validate(
             $request,
             $this->rules,
-            config('laravel-contacts.submit.messages')
+            config('laravel-contacts.submit.messages') ?? []
         );
 
         $contact = Contact::create([
@@ -47,7 +47,7 @@ class LaravelContactsController extends Controller {
             event( new ContactSubmitted($contact) );
         }
 
-        return [ 'success' => !empty($contact) ];
+        return $request->ajax() ? [ 'success' => !empty($contact) ] : redirect()->back()->with('status', 'Η επικοινωνία σου έχει αποσταλεί! ');
     }
 
     public function processed(Request $request, Contact $contact) {

@@ -4,7 +4,7 @@ Route::group([ 'middleware' => [ 'web' ] ], function () {
 
     Route::group([ 'middleware' => [
         'LaravelAdmin',
-        'can:viewany,laravel\contacts\Contact'
+        'can:viewany,laravel\contacts\Entities\Contact'
     ] ], function () {
 
         Route::get(config('laravel-admin.root_url').'/contacts', 'laravel\contacts\Http\Controllers\LaravelContactsAdminController@index');

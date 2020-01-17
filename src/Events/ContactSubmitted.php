@@ -3,7 +3,7 @@
 namespace laravel\contacts\Events;
 
 use Illuminate\Queue\SerializesModels;
-use laravel\contacts\Contact;
+use laravel\contacts\Entities\Contact;
 
 class ContactSubmitted
 {

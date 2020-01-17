@@ -13,16 +13,18 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('lc_contacts', function (Blueprint $table) {
+
             $table->increments('id');
             $table->string('name', 100);
             $table->string('surname', 100);
             $table->string('email', 100);
             $table->string('tel', 100);
             $table->string('msg', 1000);
-            $table->boolean('opt');
-            $table->boolean('processed');
+            $table->boolean('opt')->default(0);
+            $table->boolean('processed')->default(0);
             $table->timestamps();
+
         });
     }
 
@@ -33,6 +35,6 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('contacts');
+        Schema::drop('lc_contacts');
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use laravel\contacts\Contact;
+use laravel\contacts\Entities\Contact;
 
 class ContactSubmitted extends Mailable
 {

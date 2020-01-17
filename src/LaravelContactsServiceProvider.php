@@ -3,7 +3,6 @@
 namespace laravel\contacts;
 
 use Illuminate\Support\ServiceProvider;
-use laravel\contacts\Providers\AuthServiceProvider;
 use laravel\contacts\Providers\EventServiceProvider;
 
 class LaravelContactsServiceProvider extends ServiceProvider
@@ -75,7 +74,7 @@ class LaravelContactsServiceProvider extends ServiceProvider
                                 ]
                             ],
                             'authorize' => [
-                                \laravel\contacts\Contact::class
+                                \laravel\contacts\Entities\Contact::class
                             ]
                         ]
                     ])

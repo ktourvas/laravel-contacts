@@ -4,7 +4,7 @@ namespace laravel\contacts\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use laravel\contacts\Contact;
+use laravel\contacts\Entities\Contact;
 
 
 class LaravelContactsAdminController extends Controller {

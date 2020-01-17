@@ -2,7 +2,7 @@
 
 namespace laravel\contacts\Invokable;
 
-use laravel\contacts\Contact;
+use laravel\contacts\Entities\Contact;
 
 class Unread {
 
