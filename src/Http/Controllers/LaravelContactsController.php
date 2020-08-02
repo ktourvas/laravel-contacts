@@ -44,10 +44,11 @@ class LaravelContactsController extends Controller {
         ]);
 
         if( !empty($contact) ) {
-            event( new ContactSubmitted($contact) );
+            event( new ContactSubmitted($request, $contact) );
         }
 
-        return $request->ajax() ? [ 'success' => !empty($contact) ] : redirect()->back()->with('status', 'Η επικοινωνία σου έχει αποσταλεί! ');
+        return $request->ajax() ? [
+            'success' => !empty($contact) ] : redirect()->back()->with('status', 'Η επικοινωνία σου έχει αποσταλεί!');
     }
 
     public function processed(Request $request, Contact $contact) {
